@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://bar.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="bar" type="Control"]
+margin_left = -72.1862
+margin_top = -1.23476
+margin_right = -72.1862
+margin_bottom = -1.23476
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bar" type="KinematicBody2D" parent="."]
+position = Vector2( 330, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="Bar"]
+margin_left = -257.0
+margin_right = 376.0
+margin_bottom = 40.0
+color = Color( 0.196078, 0.160784, 0.160784, 1 )
+
+[node name="LineEdit" type="LineEdit" parent="Bar"]
+margin_left = -215.0
+margin_top = 1.0
+margin_right = 375.0
+margin_bottom = 39.0
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="CheckBox" type="CheckBox" parent="Bar"]
+margin_left = -248.0
+margin_top = 6.0
+margin_right = -223.0
+margin_bottom = 34.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar"]
+shape = SubResource( 1 )
+[connection signal="text_changed" from="Bar/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="Bar/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="Bar/CheckBox" to="." method="_on_CheckBox_pressed"]
